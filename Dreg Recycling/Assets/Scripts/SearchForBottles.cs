@@ -12,9 +12,10 @@ public class SearchForBottles : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isUsed == false && isInside == true)
         {
-            var random = Random.Range(0, 100);
+            var randomBottles = Random.Range(0, 100);
+            var randomMoney = Random.Range(0, 100);
 
-            if (random <= 60)
+            if (randomBottles >=60)
             {
                 GameObject.Find("Player").GetComponent<PlayerManager>().Bottles++;
                 isUsed = true;
@@ -24,9 +25,20 @@ public class SearchForBottles : MonoBehaviour
             {
                 Debug.Log("No Bottle");
             }
+
+            if (randomMoney >= 90)
+            {
+                GameObject.Find("Player").GetComponent<PlayerManager>().Money += 0.27f;
+                isUsed = true;
+                Debug.Log("Money Found");
+            }
+            else
+            {
+                Debug.Log("No Money");
+            }
         }
     }
-    private void OnTriggerStay2D(Collider2D enter)
+    private void OnTriggerEnter2D(Collider2D enter)
     {
         if (enter.name == "Player")
         {

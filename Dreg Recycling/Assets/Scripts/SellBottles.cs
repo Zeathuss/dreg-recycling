@@ -6,6 +6,7 @@ public class SellBottles : MonoBehaviour
 {
     private int Bottles;
     private int glassBottles;
+    private GameObject sellingPanel;
 
     private void Awake()
     {
@@ -13,20 +14,21 @@ public class SellBottles : MonoBehaviour
         {
             Bottles = GameObject.Find("Player").GetComponent<PlayerManager>().Bottles;
             glassBottles = GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle;
+            sellingPanel = GameObject.Find("ButtonManager").GetComponent<ButtonManager>().sellingPanel;
         }
     }
 
-    void Update()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        sellingPanel.SetActive(false);
     }
 
-    void sellBottles()
+    public void sellBottles()
     {
         GameObject.Find("Player").GetComponent<PlayerManager>().Money += (Bottles * 0.50f);
     }
 
-    void sellGlassBottles()
+    public void sellGlassBottles()
     {
         GameObject.Find("Player").GetComponent<PlayerManager>().Money += (glassBottles * 2.50f);
     }

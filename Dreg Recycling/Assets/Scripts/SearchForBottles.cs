@@ -7,7 +7,7 @@ public class SearchForBottles : MonoBehaviour
     [SerializeField] private int chanceToGet = 60;
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && other.name == "Player")
         {
             var random = Random.Range(0, 100);
 

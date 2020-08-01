@@ -32,6 +32,8 @@ public class CharacterMovement : MonoBehaviour
 
         moveInput = Input.GetAxisRaw("Horizontal");
 
+        camera.transform.position = new Vector3(transform.position.x, transform.position.y, camera.position.z);
+
         if (FlipOnMovement == true)
         {
             if (facingRight == false && moveInput > 0)

@@ -2,7 +2,10 @@
 
 public class SearchForBottles : MonoBehaviour
 {
-    [SerializeField] private int chanceToGet = 60;
+    [SerializeField] private int chanceToGetBottle = 40;
+    [SerializeField] private int chanceToGetGlassBottle = 10;
+    [SerializeField] private int chanceToGetMoney = 5;
+
     [SerializeField] private bool isUsed = false;
     [SerializeField] private bool isInside = false;
 
@@ -13,8 +16,9 @@ public class SearchForBottles : MonoBehaviour
             var randomBottles = Random.Range(0, 100);
             var randomMoney = Random.Range(0, 100);
             var randomGlassBottle = Random.Range(0, 100);
+            var randomMoneyCount = Random.Range(0.01f,5);
 
-            if (randomBottles >= 60)
+            if (randomBottles >=chanceToGetBottle)
             {
                 GameObject.Find("Player").GetComponent<PlayerManager>().Bottles++;
                 isUsed = true;
@@ -25,9 +29,9 @@ public class SearchForBottles : MonoBehaviour
                 Debug.Log("No Bottle");
             }
 
-            if (randomMoney >= 90)
+            if (randomMoney >= chanceToGetMoney)
             {
-                GameObject.Find("Player").GetComponent<PlayerManager>().Money += 0.27f;
+                GameObject.Find("Player").GetComponent<PlayerManager>().Money += randomMoneyCount;
                 isUsed = true;
                 Debug.Log("Money Found");
             }
@@ -36,7 +40,7 @@ public class SearchForBottles : MonoBehaviour
                 Debug.Log("No Money");
             }
 
-            if (randomGlassBottle >= 95)
+            if (randomGlassBottle >= chanceToGetGlassBottle)
             {
                 GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle++;
                 isUsed = true;

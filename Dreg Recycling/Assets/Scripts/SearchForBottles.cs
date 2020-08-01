@@ -14,16 +14,12 @@ public class SearchForBottles : MonoBehaviour
 
             if (random <= 60)
             {
-<<<<<<< HEAD
-                GetComponent<PlayerMenager>().Bottles++;
+                GetComponent<PlayerManager>().Bottles++;
                 Debug.Log("Bottle Found");
             }
             else
             {
                 Debug.Log("No Bottle");
-=======
-                GetComponent<PlayerManager>().Bottles++;
->>>>>>> 52c233317f2828aa5e427310b4979fb0ee4fe8f3
             }
         }
     }

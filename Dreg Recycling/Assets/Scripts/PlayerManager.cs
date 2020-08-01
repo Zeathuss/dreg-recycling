@@ -6,5 +6,11 @@ using UnityEngine.UI;
 public class PlayerManager : MonoBehaviour
 {
     public float Money;
-    public float Bottles;
+    public int Bottles;
+    public int glassBottle;
+
+    private void Save()
+    {
+        
+    }
 }

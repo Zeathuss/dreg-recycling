@@ -14,6 +14,7 @@ public class SearchForBottles : MonoBehaviour
         {
             var randomBottles = Random.Range(0, 100);
             var randomMoney = Random.Range(0, 100);
+            var randomGlassBottle = Random.Range(0, 100);
 
             if (randomBottles >=60)
             {
@@ -35,6 +36,17 @@ public class SearchForBottles : MonoBehaviour
             else
             {
                 Debug.Log("No Money");
+            }
+
+            if (randomGlassBottle >= 95)
+            {
+                GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle++;
+                isUsed = true;
+                Debug.Log("GlassBottle Found");
+            }
+            else
+            {
+                Debug.Log("No GlassBottle");
             }
         }
     }

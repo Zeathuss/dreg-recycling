@@ -14,7 +14,7 @@ public class SearchForBottles : MonoBehaviour
 
             if (random <= 60)
             {
-                GetComponent<PlayerMenager>().Bottles++;
+                GetComponent<PlayerManager>().Bottles++;
             }
         }
     }

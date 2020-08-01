@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SearchForBottles : MonoBehaviour
 {
@@ -63,7 +61,7 @@ public class SearchForBottles : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D exit)
     {
-        if(exit.name == "Player")
+        if (exit.name == "Player")
         {
             isInside = false;
         }

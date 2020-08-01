@@ -26,16 +26,16 @@ public class SearchForBottles : MonoBehaviour
             }
         }
     }
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerStay2D(Collider2D enter)
     {
-        if (other.name == "Player")
+        if (enter.name == "Player")
         {
             isInside = true;
         }
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D exit)
     {
-        if(collision.name == "Player")
+        if(exit.name == "Player")
         {
             isInside = false;
         }

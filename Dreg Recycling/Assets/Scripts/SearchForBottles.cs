@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SearchForBottles : MonoBehaviour
 {
@@ -16,7 +14,7 @@ public class SearchForBottles : MonoBehaviour
             var randomMoney = Random.Range(0, 100);
             var randomGlassBottle = Random.Range(0, 100);
 
-            if (randomBottles >=60)
+            if (randomBottles >= 60)
             {
                 GameObject.Find("Player").GetComponent<PlayerManager>().Bottles++;
                 isUsed = true;
@@ -59,7 +57,7 @@ public class SearchForBottles : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D exit)
     {
-        if(exit.name == "Player")
+        if (exit.name == "Player")
         {
             isInside = false;
         }

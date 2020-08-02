@@ -16,5 +16,6 @@ public class SpriteSorter : MonoBehaviour
     private void LateUpdate()
     {
         renderer.sortingOrder = (int)(sortingOrder - transform.position.y - offset);
+        if (runOnce) Destroy(this);
     }
 }

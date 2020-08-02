@@ -18,11 +18,16 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private int maxThirst = 20;
 
     public float defaultSpeed = 5;
-    public float speedWhileHungry = 0.5f;
+
+    public float moveWhileHungry;
+    public float moveWhileŽedan;
 
 
     private void Start()
     {
+        moveWhileHungry = defaultSpeed / 2;
+        moveWhileŽedan = defaultSpeed / 2;
+
         moveSpeed = defaultSpeed;
         StartCoroutine(HungerSpeed());
     }
@@ -30,29 +35,24 @@ public class PlayerManager : MonoBehaviour
     {
         if (Hunger >= maxHunger)
         {
-            Hunger = maxHunger;
-            moveSpeed = speedWhileHungry;
+            moveSpeed = moveWhileHungry;
         }
-        else
-        {
-            moveSpeed = defaultSpeed;
-        }
+        else moveSpeed = moveSpeed;
+
         if (Thirst >= maxThirst)
         {
-            Thirst = maxThirst;
-            moveSpeed = speedWhileHungry;
+            moveSpeed = moveWhileŽedan;
         }
-        else
-        {
-            moveSpeed = defaultSpeed;
-        }
+        else moveSpeed = moveSpeed;
     }
 
     IEnumerator HungerSpeed()
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(18f);
 
         Hunger++;
         Thirst++;
+
+        StartCoroutine(HungerSpeed());
     }
 }

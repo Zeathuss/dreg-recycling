@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class SellBottles : MonoBehaviour
 {
     private int Bottles;
     private int glassBottles;
     private GameObject sellingPanel;
+
+    
 
     private void Awake()
     {

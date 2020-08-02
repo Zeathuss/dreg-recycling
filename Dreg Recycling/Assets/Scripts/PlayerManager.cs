@@ -21,13 +21,13 @@ public class PlayerManager : MonoBehaviour
     public float defaultSpeed = 5;
 
     public float moveWhileHungry;
-    public float moveWhileŽedan;
+    public float moveWhileThirsty;
 
 
     private void Start()
     {
         moveWhileHungry = defaultSpeed / 2;
-        moveWhileŽedan = defaultSpeed / 2;
+        moveWhileThirsty = defaultSpeed / 2;
 
         moveSpeed = defaultSpeed;
         StartCoroutine(HungerSpeed());
@@ -42,7 +42,7 @@ public class PlayerManager : MonoBehaviour
 
         if (Thirst >= maxThirst)
         {
-            moveSpeed = moveWhileŽedan;
+            moveSpeed = moveWhileThirsty;
         }
         else moveSpeed = moveSpeed;
     }

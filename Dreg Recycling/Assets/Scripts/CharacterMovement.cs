@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float moveSpeed;
-
-    public Transform camera;
-
-    public Rigidbody2D rb;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Transform camera;
+    [SerializeField] private Rigidbody2D rb;
 
     private bool facingRight = true;
     private float moveInput;
 
-    public bool CameraFollow = false;
-    public bool LookTowardsMouse = false;
-    public bool FlipOnMovement = false;
+    [SerializeField] private bool CameraFollow = false;
+    [SerializeField] private bool LookTowardsMouse = false;
+    [SerializeField] private bool FlipOnMovement = false;
+
+    [SerializeField] private Animator anim;
 
     Vector2 movement;
 
@@ -47,6 +47,39 @@ public class CharacterMovement : MonoBehaviour
                 Flip();
             }
         }
+
+
+
+        #region Animations
+        if (movement.x > 0 && movement.y > 0)
+        {
+            anim.Play("PlayerUp");
+        }else if (movement.x > 0 && movement.y < 0)
+        {
+            anim.Play("PlayerDown");
+        }else if (movement.x < 0 && movement.y > 0)
+        {
+            anim.Play("PlayerUp");
+        }else if (movement.x < 0 && movement.y < 0)
+        {
+            anim.Play("PlayerDown");
+        }else if (movement.x > 0)
+        {
+            anim.Play("PlayerRight");
+        }else if (movement.x < 0)
+        {
+            anim.Play("PlayerLeft");
+        }else if (movement.y > 0)
+        {
+            anim.Play("PlayerUp");
+        }else if (movement.y < 0)
+        {
+            anim.Play("PlayerDown");
+        }else if(movement.x == 0 && movement.y == 0)
+        {
+            anim.Play("PlayerDown 0");
+        }
+        #endregion
     }
 
     void FixedUpdate()

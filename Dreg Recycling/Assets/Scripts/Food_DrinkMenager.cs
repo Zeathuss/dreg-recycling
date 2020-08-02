@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Food_DrinkMenager : MonoBehaviour
@@ -22,28 +21,34 @@ public class Food_DrinkMenager : MonoBehaviour
     {
         if (isDrink)
         {
-            Drink();
-        }
-        if (isDrink && hasLotSugar)
-        {
-            Drink();
-            speedBoost();
+            if (hasLotSugar)
+            {
+                Drink();
+                speedBoost();
+            }
+            else
+            {
+                Drink();
+            }
         }
 
         if (isFood)
         {
-            Eat();
-        }
-        if (isFood && hasLotSugar)
-        {
-            Eat();
-            speedBoost();
+            if (hasLotSugar)
+            {
+                Eat();
+                speedBoost();
+            }
+            else
+            {
+                Eat();
+            }
         }
     }
 
     void Eat()
     {
-        GameObject.Find("Player").GetComponent<PlayerManager>().Hunger-=Calories/100;
+        GameObject.Find("Player").GetComponent<PlayerManager>().Hunger -= Calories / 100;
         Destroy(this);
     }
 

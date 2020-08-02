@@ -124,10 +124,12 @@ MonoBehaviour:
   isDrink: 0
   isFood: 1
   hasLotSugar: 0
-  Calories: 0
+  isSalty: 0
+  Calories: 100
   drinkAmount: 0
-  BoostAmount: 0
-  boostLenght: 0
-  hungerPenalty: 0
-  thirstPenalty: 0
-  speedPenalty: 0
+  BoostAmount: 1
+  boostLenght: 5
+  hungerPenalty: 2
+  thirstPenalty: 3
+  speedPenalty: 1
+  saltPenalty: 0

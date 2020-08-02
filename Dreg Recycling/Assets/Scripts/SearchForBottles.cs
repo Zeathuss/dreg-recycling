@@ -26,6 +26,7 @@ public class SearchForBottles : MonoBehaviour
             }
             else
             {
+                isUsed = true;
                 Debug.Log("No Bottle");
             }
 
@@ -37,6 +38,7 @@ public class SearchForBottles : MonoBehaviour
             }
             else
             {
+                isUsed = true;
                 Debug.Log("No Money");
             }
 
@@ -48,6 +50,7 @@ public class SearchForBottles : MonoBehaviour
             }
             else
             {
+                isUsed = true;
                 Debug.Log("No GlassBottle");
             }
         }

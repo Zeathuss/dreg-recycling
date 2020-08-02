@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed;
 
     public Transform camera;
 
@@ -22,6 +22,8 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        moveSpeed = GetComponent<PlayerManager>().moveSpeed;
+
         if (LookTowardsMouse == true)
         {
             faceMouse();

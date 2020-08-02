@@ -2004,6 +2004,11 @@ MonoBehaviour:
   Money: 0
   Bottles: 0
   glassBottle: 0
+  moveSpeed: 5
+  Hunger: 0
+  maxHunger: 20
+  Thirst: 0
+  maxThirst: 20
 --- !u!50 &2129484297
 Rigidbody2D:
   serializedVersion: 4

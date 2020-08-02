@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AccessoriesScr : MonoBehaviour
 {
@@ -9,12 +10,18 @@ public class AccessoriesScr : MonoBehaviour
 
     public Image[] InventoryGameObjects;
 
-    private bool Full;
+    public bool Full;
     private int i;
+    private float Money;
+
+    [SerializeField] private TMP_Text text;
 
     private void Update()
     {
         InventoryClick();
+
+        Money = FindObjectOfType<PlayerManager>().Money;
+        text.text = "" + System.Math.Round(Money, 2);
 
         foreach (Image m in InventoryGameObjects)
         {

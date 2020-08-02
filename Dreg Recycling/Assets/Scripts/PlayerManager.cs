@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour
     public int Bottles;
     public int glassBottle;
 
-    [SerializeField]public float moveSpeed=5f;
+    [SerializeField]public float moveSpeed;
 
     public int Hunger = 0;
     [SerializeField] private int maxHunger = 20;
@@ -17,9 +17,13 @@ public class PlayerManager : MonoBehaviour
     public int Thirst = 0;
     [SerializeField] private int maxThirst = 20;
 
+    public float defaultSpeed = 5;
+    public float speedWhileHungry = 0.5f;
+
 
     private void Start()
     {
+        moveSpeed = defaultSpeed;
         StartCoroutine(HungerSpeed());
     }
     private void Update()
@@ -27,12 +31,20 @@ public class PlayerManager : MonoBehaviour
         if (Hunger >= maxHunger)
         {
             Hunger = maxHunger;
-            moveSpeed = moveSpeed * 0.09f;
+            moveSpeed = speedWhileHungry;
+        }
+        else
+        {
+            moveSpeed = defaultSpeed;
         }
         if (Thirst >= maxThirst)
         {
             Thirst = maxThirst;
-            moveSpeed = moveSpeed * 0.09f;
+            moveSpeed = speedWhileHungry;
+        }
+        else
+        {
+            moveSpeed = defaultSpeed;
         }
     }
 

@@ -15,8 +15,20 @@ MonoBehaviour:
   rsKeyList: []
   rsLastCachedKeyList: []
   configId: 
-  currentEnvironmentId: 
-  environments: []
+  currentEnvironmentId: 84a98f1d-27d5-4ca3-8bd0-90200d21ed91
+  environments:
+  - id: af9796e7-9117-4934-b475-eb92f11a4e30
+    appId: 
+    name: Release (Default)
+    description: 
+    createdAt: 2020-08-02T14:56:26Z
+    updatedAt: 2020-08-02T14:56:26Z
+  - id: 84a98f1d-27d5-4ca3-8bd0-90200d21ed91
+    appId: 
+    name: Development
+    description: 
+    createdAt: 2020-08-02T14:56:26Z
+    updatedAt: 2020-08-02T14:56:26Z
   rulesList: []
   lastCachedRulesList: []
   addedRulesIDs: []

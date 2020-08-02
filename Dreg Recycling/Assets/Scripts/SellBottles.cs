@@ -28,6 +28,8 @@ public class SellBottles : MonoBehaviour
 
     public void sellBottles()
     {
+
+
         //GameObject.Find("Player").GetComponent<PlayerManager>().Money += 0.50f;
         //GameObject.Find("Player").GetComponent<PlayerManager>().Bottles -= Bottles;
         //Bottles -= Bottles;

@@ -50,7 +50,7 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator HungerSpeed()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(15f);
 
         Hunger++;
         Thirst++;

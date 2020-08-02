@@ -6,6 +6,7 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private bool isDrink; //Piće
     [SerializeField] private bool isFood; //Hrana
     [SerializeField] private bool hasLotSugar; //Hrana ili pića sa puno šećera
+    [SerializeField] private bool isSalty; //Hrana ili piće koje je slano aka. tryharder
 
     [SerializeField] private int Calories; //Kalorije u hrani koje se pri uzimanju djele sa 100 i oduzima se glad
     [SerializeField] private int drinkAmount; //Količina pića u boci koje se pri uzimanju dijeli sa 10 i oduzima se žeđ
@@ -16,6 +17,7 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private int hungerPenalty; //Koliko će bit gladan nakon ubrzanja
     [SerializeField] private int thirstPenalty; //Koliko će bit žedan nakon ubrzanja
     [SerializeField] private int speedPenalty; //Koliko će bit sporiji nakon ubrzanja
+    [SerializeField] private int saltPenalty; //Koliko će bit žedan nakon konzumiranja
 
     void Use()
     {
@@ -25,6 +27,10 @@ public class Food_DrinkMenager : MonoBehaviour
             {
                 Drink();
                 speedBoost();
+            }
+            if (isSalty)
+            {
+                salt();
             }
             else
             {
@@ -38,6 +44,10 @@ public class Food_DrinkMenager : MonoBehaviour
             {
                 Eat();
                 speedBoost();
+            }
+            if (isSalty)
+            {
+                salt();
             }
             else
             {
@@ -61,6 +71,11 @@ public class Food_DrinkMenager : MonoBehaviour
     void speedBoost()
     {
         StartCoroutine(SpeedBoostPenalty());
+    }
+
+    void salt()
+    {
+        GameObject.Find("Player").GetComponent<PlayerManager>().Thirst += saltPenalty;
     }
 
     IEnumerator SpeedBoostPenalty()

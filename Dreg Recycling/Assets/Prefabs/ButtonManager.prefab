@@ -54,3 +54,6 @@ MonoBehaviour:
   backpackSprites:
   - {fileID: 21300000, guid: ef08bc1298905ce48a8c99e2fd42f9d3, type: 3}
   - {fileID: 21300000, guid: bcbd825c88e49fd49ab4eeed84df3b4a, type: 3}
+  menuSceneName: Menu
+  optionsSceneName: Options
+  gameSceneName: Project

@@ -6,43 +6,39 @@ using UnityEngine;
 
 public class SellBottles : MonoBehaviour
 {
-    private int Bottles;
-    private int glassBottles;
-    private GameObject sellingPanel;
+    [SerializeField] private int Bottles;
+    [SerializeField] private int glassBottles;
+    [SerializeField] private GameObject sellingPanel;
 
     
 
-    private void Awake()
+    private void Update()
     {
         if (GameObject.Find("Player"))
         {
-            Bottles = GameObject.Find("Player").GetComponent<PlayerManager>().Bottles;
-            glassBottles = GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle;
-            sellingPanel = GameObject.Find("ButtonManager").GetComponent<ButtonManager>().sellingPanel;
+            Bottles = FindObjectOfType<PlayerManager>().Bottles;
+            glassBottles = FindObjectOfType<PlayerManager>().glassBottle;
+            sellingPanel = FindObjectOfType<ButtonManager>().sellingPanel;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        sellingPanel.SetActive(true);
+        if(collision.tag == "Recycling")
+        {
+            sellingPanel.SetActive(true);
+        }
     }
-
-
-    //CODE UNDERNEATH DOESN'T WORK!!!
 
     public void sellBottles()
     {
-
-
-        //GameObject.Find("Player").GetComponent<PlayerManager>().Money += 0.50f;
-        //GameObject.Find("Player").GetComponent<PlayerManager>().Bottles -= Bottles;
-        //Bottles -= Bottles;
+        FindObjectOfType<PlayerManager>().Money += (Bottles * 0.50f);
+        FindObjectOfType<PlayerManager>().Bottles -= Bottles;
     }
 
     public void sellGlassBottles()
     {
-        //GameObject.Find("Player").GetComponent<PlayerManager>().Money += (glassBottles * 2.50f);
-       // GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle -= glassBottles;
-       // glassBottles -= glassBottles;
+        FindObjectOfType<PlayerManager>().Money += (glassBottles * 2.50f);
+        FindObjectOfType<PlayerManager>().glassBottle -= glassBottles;
     }
 }

@@ -76,4 +76,12 @@ public class AccessoriesScr : MonoBehaviour
             
         }
     }
+
+    public void dropItem()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log(gameObject.name);
+        }
+    }
 }

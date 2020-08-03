@@ -45,6 +45,16 @@ public class PlayerManager : MonoBehaviour
             moveSpeed = moveWhileThirsty;
         }
         else moveSpeed = moveSpeed;
+
+
+        if(FindObjectOfType<ButtonManager>().sellingPanel.activeSelf == true || FindObjectOfType<OpeningShop>().shopPanel.activeSelf == true)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
     }
 
     IEnumerator HungerSpeed()

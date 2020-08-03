@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpeningShop : MonoBehaviour
 {
-    [SerializeField] private GameObject shopPanel;
+    public GameObject shopPanel;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

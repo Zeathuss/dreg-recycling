@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 5976577505904198955}
   - component: {fileID: 5976577505904198954}
   - component: {fileID: 5976577505904198959}
+  - component: {fileID: 250265026}
+  - component: {fileID: 250265027}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -144,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sortingOrder: 5000
-  offset: 1
+  offset: 0
   runOnce: 0
 --- !u!114 &5976577505904198953
 MonoBehaviour:
@@ -158,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a0c822a060430498ea4c57abc77154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FoodNDrinks: []
 --- !u!114 &5976577505904198952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +183,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Full: 0
+  text: {fileID: 0}
 --- !u!50 &5976577505904198955
 Rigidbody2D:
   serializedVersion: 4
@@ -214,7 +219,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.73131275}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -225,7 +230,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.375, y: 1.875}
+  m_Size: {x: 0.8873956, y: 0.40943646}
   m_EdgeRadius: 0
 --- !u!95 &5976577505904198959
 Animator:
@@ -246,3 +251,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &250265026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976577505904198949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 290ed36a148132c45827fddcba3b560d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopPanel: {fileID: 0}
+--- !u!114 &250265027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5976577505904198949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbd37326e8492f24d930ff2eef0a32c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Bottles: 0
+  glassBottles: 0
+  sellingPanel: {fileID: 0}

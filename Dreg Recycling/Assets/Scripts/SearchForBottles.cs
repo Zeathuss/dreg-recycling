@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SearchForBottles : MonoBehaviour
 {
@@ -17,7 +18,6 @@ public class SearchForBottles : MonoBehaviour
 
     private Transform progressBar;
     private Transform Bar;
-
     private bool progressBarExists = true;
 
     private void Awake()
@@ -31,78 +31,81 @@ public class SearchForBottles : MonoBehaviour
 
     private void Update()
     {
-        if (progressBarExists)
+        if (!FindObjectOfType<AccessoriesScr>().Full)
         {
-            if (!isInside)
+            if (progressBarExists)
             {
-                progressBar.gameObject.SetActive(false);
-            }
-            else
-            {
-                progressBar.gameObject.SetActive(true);
-            }
-
-            if (Input.GetKey(KeyCode.Space))
-            {
-                timePressingSpace += Time.deltaTime;
-                SetSize(timePressingSpace * 2);
-
-                if (timePressingSpace >= timeToSearch && isUsed == false && isInside == true)
+                if (!isInside)
                 {
-                    var randomBottles = Random.Range(0, 100);
-                    var randomMoney = Random.Range(0, 100);
-                    var randomGlassBottle = Random.Range(0, 100);
-                    var randomMoneyCount = Random.Range(0.01f, 5);
+                    progressBar.gameObject.SetActive(false);
+                }
+                else
+                {
+                    progressBar.gameObject.SetActive(true);
+                }
 
-                    if (randomBottles <= chanceToGetBottle)
-                    {
-                        GameObject.Find("Player").GetComponent<PlayerManager>().Bottles++;
-                        isUsed = true;
-                        Debug.Log("Bottle Found");
-                    }
-                    else
-                    {
-                        isUsed = true;
-                        Debug.Log("No Bottle");
-                    }
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    timePressingSpace += Time.deltaTime;
+                    SetSize(timePressingSpace * 2);
 
-                    if (randomMoney <= chanceToGetMoney)
+                    if (timePressingSpace >= timeToSearch && isUsed == false && isInside == true)
                     {
-                        GameObject.Find("Player").GetComponent<PlayerManager>().Money += randomMoneyCount;
-                        isUsed = true;
-                        Debug.Log("Money Found");
-                    }
-                    else
-                    {
-                        isUsed = true;
-                        Debug.Log("No Money");
-                    }
+                        var randomBottles = Random.Range(0, 100);
+                        var randomMoney = Random.Range(0, 100);
+                        var randomGlassBottle = Random.Range(0, 100);
+                        var randomMoneyCount = Random.Range(0.01f, 5);
 
-                    if (randomGlassBottle <= chanceToGetGlassBottle)
-                    {
-                        GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle++;
-                        isUsed = true;
-                        Debug.Log("GlassBottle Found");
-                    }
-                    else
-                    {
-                        isUsed = true;
-                        Debug.Log("No GlassBottle");
+                        if (randomBottles <= chanceToGetBottle)
+                        {
+                            GameObject.Find("Player").GetComponent<PlayerManager>().Bottles++;
+                            isUsed = true;
+                            Debug.Log("Bottle Found");
+                        }
+                        else
+                        {
+                            isUsed = true;
+                            Debug.Log("No Bottle");
+                        }
+
+                        if (randomMoney <= chanceToGetMoney)
+                        {
+                            GameObject.Find("Player").GetComponent<PlayerManager>().Money += randomMoneyCount;
+                            isUsed = true;
+                            Debug.Log("Money Found");
+                        }
+                        else
+                        {
+                            isUsed = true;
+                            Debug.Log("No Money");
+                        }
+
+                        if (randomGlassBottle <= chanceToGetGlassBottle)
+                        {
+                            GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle++;
+                            isUsed = true;
+                            Debug.Log("GlassBottle Found");
+                        }
+                        else
+                        {
+                            isUsed = true;
+                            Debug.Log("No GlassBottle");
+                        }
                     }
                 }
-            }
 
-            if (Input.GetKeyUp(KeyCode.Space) || !isInside)
-            {
-                timePressingSpace = 0;
-                SetSize(0);
-            }
+                if (Input.GetKeyUp(KeyCode.Space) || !isInside)
+                {
+                    timePressingSpace = 0;
+                    SetSize(0);
+                }
 
-            if (Bar.localScale.x > 4)
-            {
-                progressBarExists = false;
-                SetSize(4);
-                Destroy(progressBar.gameObject);
+                if (Bar.localScale.x > 4)
+                {
+                    progressBarExists = false;
+                    SetSize(4);
+                    Destroy(progressBar.gameObject);
+                }
             }
         }
     }

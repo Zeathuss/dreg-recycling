@@ -26,19 +26,6 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private float maxThirstSpeed = 1;
     [SerializeField] private float thirstAmount = 0.05f;
 
-    private void Start()
-    {
-        StartCoroutine(HungerSpeed());
-        StartCoroutine(HungerAmount());
-        StartCoroutine(ThirstAmount());
-        StartCoroutine(ThirstSpeed());
-    }
-
-    private void Update()
-    {
-
-    }
-
     void Use()
     {
         if (isDrink)
@@ -117,44 +104,5 @@ public class Food_DrinkMenager : MonoBehaviour
         StopCoroutine(SpeedBoostPenalty());
 
         Destroy(this);
-    }
-
-    IEnumerator HungerSpeed()
-    {
-        yield return new WaitForSeconds(hungerSpeed);
-
-        hungerAmount += 0.05f;
-        hungerSpeed--;
-
-        StartCoroutine(HungerSpeed());
-    }
-
-    IEnumerator HungerAmount()
-    {
-        yield return new WaitForSeconds(hungerSpeed);
-
-        GameObject.Find("Player").GetComponent<PlayerManager>().Hunger += hungerAmount;
-
-        StartCoroutine(HungerAmount());
-    }
-
-
-    IEnumerator ThirstSpeed()
-    {
-        yield return new WaitForSeconds(thirstSpeed);
-
-        thirstAmount += 0.05f;
-        thirstSpeed--;
-
-        StartCoroutine(ThirstSpeed());
-    }
-
-    IEnumerator ThirstAmount()
-    {
-        yield return new WaitForSeconds(thirstSpeed);
-
-        GameObject.Find("Player").GetComponent<PlayerManager>().Thirst += thirstAmount;
-
-        StartCoroutine(ThirstAmount());
     }
 }

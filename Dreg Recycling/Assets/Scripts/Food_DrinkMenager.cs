@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class Food_DrinkMenager : MonoBehaviour
@@ -19,19 +19,12 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private int speedPenalty; //Koliko će bit sporiji nakon ubrzanja
     [SerializeField] private int saltPenalty; //Koliko će bit žedan nakon konzumiranja
 
-    [SerializeField] private float hungerSpeed;
-    [SerializeField] private float maxHungerSpeed = 1;
-    [SerializeField] private float hungerAmount = 0.05f;
-    [SerializeField] private float thirstSpeed;
-    [SerializeField] private float maxThirstSpeed = 1;
-    [SerializeField] private float thirstAmount = 0.05f;
-
     void Use()
     {
         if (isDrink)
         {
-            GameObject.Find("Player").GetComponent<PlayerManager>().thirstSpeed += 2;
-            GameObject.Find("Player").GetComponent<PlayerManager>().thirstAmount = 0;
+            thirstSpeed += 2;
+            thirstAmount = 0;
 
             if (hasLotSugar)
             {
@@ -50,8 +43,8 @@ public class Food_DrinkMenager : MonoBehaviour
 
         if (isFood)
         {
-            GameObject.Find("Player").GetComponent<PlayerManager>().hungerSpeed += 2;
-            GameObject.Find("Player").GetComponent<PlayerManager>().hungerAmount = GameObject.Find("Player").GetComponent<PlayerManager>().Hunger/2;
+            hungerSpeed += 2;
+            hungerAmount = GetComponent<PlayerManager>().Hunger/2;
 
             if (hasLotSugar)
             {

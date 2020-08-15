@@ -19,7 +19,6 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private int speedPenalty; //Koliko će bit sporiji nakon ubrzanja
     [SerializeField] private int saltPenalty; //Koliko će bit žedan nakon konzumiranja
 
-<<<<<<< HEAD
     [SerializeField] private float hungerSpeed;
     [SerializeField] private float maxHungerSpeed = 1;
     [SerializeField] private float hungerAmount = 0.05f;
@@ -27,19 +26,12 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private float maxThirstSpeed = 1;
     [SerializeField] private float thirstAmount = 0.05f;
 
-=======
->>>>>>> 34619c177169d39108b0c6a7ff40da546b0b0fd2
-
     private void Start()
     {
-
-<<<<<<< HEAD
         StartCoroutine(HungerSpeed());
         StartCoroutine(HungerAmount());
         StartCoroutine(ThirstAmount());
         StartCoroutine(ThirstSpeed());
-=======
->>>>>>> 34619c177169d39108b0c6a7ff40da546b0b0fd2
     }
 
     private void Update()
@@ -127,8 +119,6 @@ public class Food_DrinkMenager : MonoBehaviour
         Destroy(this);
     }
 
-
-<<<<<<< HEAD
     IEnumerator HungerSpeed()
     {
         yield return new WaitForSeconds(hungerSpeed);
@@ -167,7 +157,4 @@ public class Food_DrinkMenager : MonoBehaviour
 
         StartCoroutine(ThirstAmount());
     }
-=======
-
->>>>>>> 34619c177169d39108b0c6a7ff40da546b0b0fd2
 }

@@ -82,7 +82,7 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(hungerSpeed);
 
-        hungerAmount++;
+        hungerAmount -= 0.05f;
         hungerSpeed--;
 
         StartCoroutine(HungerSpeed());
@@ -102,7 +102,7 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(thirstSpeed);
 
-        thirstAmount++;
+        thirstAmount -= 0.05f;
         thirstSpeed--;
 
         StartCoroutine(ThirstSpeed());

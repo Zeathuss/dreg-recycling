@@ -36,8 +36,8 @@ public class Food_DrinkMenager : MonoBehaviour
     {
         if (isDrink)
         {
-            GameObject.Find("Player").GetComponent<PlayerManager>().thirstSpeed += 2;
-            GameObject.Find("Player").GetComponent<PlayerManager>().thirstAmount = 0;
+            thirstSpeed += 2;
+            thirstAmount = 0;
 
             if (hasLotSugar)
             {
@@ -56,8 +56,8 @@ public class Food_DrinkMenager : MonoBehaviour
 
         if (isFood)
         {
-            GameObject.Find("Player").GetComponent<PlayerManager>().hungerSpeed += 2;
-            GameObject.Find("Player").GetComponent<PlayerManager>().hungerAmount = GameObject.Find("Player").GetComponent<PlayerManager>().Hunger/2;
+            hungerSpeed += 2;
+            hungerAmount = GetComponent<PlayerManager>().Hunger/2;
 
             if (hasLotSugar)
             {

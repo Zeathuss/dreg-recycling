@@ -12,11 +12,11 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField]public float moveSpeed;
 
-    public float Hunger = 0;
-    [SerializeField] private int maxHunger = 1;
+    public float Hunger = 1;
+    [SerializeField] private int maxHunger = 0;
 
-    public float Thirst = 0;
-    [SerializeField] private int maxThirst = 1;
+    public float Thirst = 1;
+    [SerializeField] private int maxThirst = 0;
 
     public float Health = 1;
 
@@ -28,11 +28,11 @@ public class PlayerManager : MonoBehaviour
     public float hungerSpeed;
     [SerializeField] private float maxHungerSpeed = 1;
     [SerializeField] private float minHungerSpeed = 30;
-    public float hungerAmount = 1;
+    public float hungerAmount = 0;
     public float thirstSpeed;
     [SerializeField] private float maxThirstSpeed = 1;
     [SerializeField] private float minThirstSpeed = 20;
-    public float thirstAmount = 1;
+    public float thirstAmount = 0;
 
     private void Start()
     {
@@ -46,6 +46,8 @@ public class PlayerManager : MonoBehaviour
 
         StartCoroutine(HungerSpeed());
         StartCoroutine(ThirstSpeed());
+        StartCoroutine(HungerAmount());
+        StartCoroutine(ThirstAmount());
     }
     private void Update()
     {
@@ -55,13 +57,13 @@ public class PlayerManager : MonoBehaviour
         if (hungerSpeed >= minHungerSpeed) hungerSpeed = minHungerSpeed;
         if (thirstSpeed >= minThirstSpeed) thirstSpeed = minThirstSpeed;
 
-        if (Hunger >= maxHunger)
+        if (Hunger <= maxHunger)
         {
             moveSpeed = moveWhileHungry;
         }
         else moveSpeed = moveSpeed;
 
-        if (Thirst >= maxThirst)
+        if (Thirst <= maxThirst)
         {
             moveSpeed = moveWhileThirsty;
         }
@@ -75,6 +77,16 @@ public class PlayerManager : MonoBehaviour
         else
         {
             Time.timeScale = 1;
+        }
+
+
+        if(Hunger < 0)
+        {
+            Hunger = 0;
+        }
+        if (Thirst < 0)
+        {
+            Thirst = 0;
         }
     }
 
@@ -92,7 +104,7 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(hungerSpeed);
 
-        GameObject.Find("Player").GetComponent<PlayerManager>().Hunger += hungerAmount;
+        Hunger += hungerAmount;
 
         StartCoroutine(HungerAmount());
     }
@@ -112,7 +124,7 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(thirstSpeed);
 
-        GameObject.Find("Player").GetComponent<PlayerManager>().Thirst += thirstAmount;
+        Thirst += thirstAmount;
 
         StartCoroutine(ThirstAmount());
     }

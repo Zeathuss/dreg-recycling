@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,10 @@ public class SearchForBottles : MonoBehaviour
 
     [SerializeField] private float timeToSearch;
     [SerializeField] private float timePressingSpace;
+
+    [SerializeField] private GameObject glassBottle;
+    [SerializeField] private GameObject plasticBottle;
+    [SerializeField] private GameObject moneyGet;
 
     private Transform progressBar;
     private Transform Bar;
@@ -89,6 +94,8 @@ public class SearchForBottles : MonoBehaviour
                             GameObject.Find("Player").GetComponent<PlayerManager>().glassBottle++;
                             isUsed = true;
                             Debug.Log("GlassBottle Found");
+
+
                         }
                         else
                         {

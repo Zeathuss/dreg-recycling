@@ -19,6 +19,7 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private int speedPenalty; //Koliko će bit sporiji nakon ubrzanja
     [SerializeField] private int saltPenalty; //Koliko će bit žedan nakon konzumiranja
 
+<<<<<<< HEAD
     [SerializeField] private float hungerSpeed;
     [SerializeField] private float maxHungerSpeed = 1;
     [SerializeField] private float hungerAmount = 0.05f;
@@ -26,30 +27,32 @@ public class Food_DrinkMenager : MonoBehaviour
     [SerializeField] private float maxThirstSpeed = 1;
     [SerializeField] private float thirstAmount = 0.05f;
 
+=======
+>>>>>>> 34619c177169d39108b0c6a7ff40da546b0b0fd2
 
     private void Start()
     {
-        hungerSpeed = 30;
-        thirstSpeed = 20;
 
+<<<<<<< HEAD
         StartCoroutine(HungerSpeed());
         StartCoroutine(HungerAmount());
         StartCoroutine(ThirstAmount());
         StartCoroutine(ThirstSpeed());
+=======
+>>>>>>> 34619c177169d39108b0c6a7ff40da546b0b0fd2
     }
 
     private void Update()
     {
-        if (hungerSpeed >= maxHungerSpeed) hungerSpeed = maxHungerSpeed;
-        if (thirstSpeed >= maxThirstSpeed) thirstSpeed = maxThirstSpeed;
+
     }
 
     void Use()
     {
         if (isDrink)
         {
-            thirstSpeed += 2;
-            thirstAmount = 0;
+            GameObject.Find("Player").GetComponent<PlayerManager>().thirstSpeed += 2;
+            GameObject.Find("Player").GetComponent<PlayerManager>().thirstAmount = 0;
 
             if (hasLotSugar)
             {
@@ -68,8 +71,8 @@ public class Food_DrinkMenager : MonoBehaviour
 
         if (isFood)
         {
-            hungerSpeed += 2;
-            hungerAmount = GetComponent<PlayerManager>().Hunger/2;
+            GameObject.Find("Player").GetComponent<PlayerManager>().hungerSpeed += 2;
+            GameObject.Find("Player").GetComponent<PlayerManager>().hungerAmount = GameObject.Find("Player").GetComponent<PlayerManager>().Hunger/2;
 
             if (hasLotSugar)
             {
@@ -125,6 +128,7 @@ public class Food_DrinkMenager : MonoBehaviour
     }
 
 
+<<<<<<< HEAD
     IEnumerator HungerSpeed()
     {
         yield return new WaitForSeconds(hungerSpeed);
@@ -163,4 +167,7 @@ public class Food_DrinkMenager : MonoBehaviour
 
         StartCoroutine(ThirstAmount());
     }
+=======
+
+>>>>>>> 34619c177169d39108b0c6a7ff40da546b0b0fd2
 }

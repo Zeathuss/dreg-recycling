@@ -25,14 +25,14 @@ public class PlayerManager : MonoBehaviour
     public float moveWhileHungry;
     public float moveWhileThirsty;
 
-    [SerializeField] private float hungerSpeed;
+    public float hungerSpeed;
     [SerializeField] private float maxHungerSpeed = 1;
     [SerializeField] private float minHungerSpeed = 30;
-    [SerializeField] private float hungerAmount = 1;
-    [SerializeField] private float thirstSpeed;
+    public float hungerAmount = 1;
+    public float thirstSpeed;
     [SerializeField] private float maxThirstSpeed = 1;
     [SerializeField] private float minThirstSpeed = 20;
-    [SerializeField] private float thirstAmount = 1;
+    public float thirstAmount = 1;
 
     private void Start()
     {

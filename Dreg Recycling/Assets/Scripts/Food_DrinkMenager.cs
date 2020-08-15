@@ -21,16 +21,18 @@ public class Food_DrinkMenager : MonoBehaviour
 
     [SerializeField] private float hungerSpeed;
     [SerializeField] private float maxHungerSpeed = 1;
+    [SerializeField] private float minHungerSpeed = 30;
     [SerializeField] private float hungerAmount = 1;
     [SerializeField] private float thirstSpeed;
     [SerializeField] private float maxThirstSpeed = 1;
+    [SerializeField] private float minThirstSpeed = 20;
     [SerializeField] private float thirstAmount = 1;
 
 
     private void Start()
     {
-        hungerSpeed = 30;
-        thirstSpeed = 20;
+        hungerSpeed = minHungerSpeed;
+        thirstSpeed = minThirstSpeed;
 
         StartCoroutine(HungerSpeed());
         StartCoroutine(ThirstSpeed());
@@ -38,8 +40,11 @@ public class Food_DrinkMenager : MonoBehaviour
 
     private void Update()
     {
-        if (hungerSpeed >= maxHungerSpeed) hungerSpeed = maxHungerSpeed;
-        if (thirstSpeed >= maxThirstSpeed) thirstSpeed = maxThirstSpeed;
+        if (hungerSpeed <= maxHungerSpeed) hungerSpeed = maxHungerSpeed;
+        if (thirstSpeed <= maxThirstSpeed) thirstSpeed = maxThirstSpeed;
+
+        if (hungerSpeed >= minHungerSpeed) hungerSpeed = minHungerSpeed;
+        if (thirstSpeed >= minThirstSpeed) thirstSpeed = minThirstSpeed;
     }
 
     void Use()
@@ -128,7 +133,7 @@ public class Food_DrinkMenager : MonoBehaviour
         yield return new WaitForSeconds(hungerSpeed);
 
         hungerAmount++;
-        hungerSpeed++;
+        hungerSpeed--;
 
         StartCoroutine(HungerSpeed());
     }
@@ -148,7 +153,7 @@ public class Food_DrinkMenager : MonoBehaviour
         yield return new WaitForSeconds(thirstSpeed);
 
         thirstAmount++;
-        thirstSpeed++;
+        thirstSpeed--;
 
         StartCoroutine(ThirstSpeed());
     }

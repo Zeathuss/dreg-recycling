@@ -713,7 +713,7 @@ Transform:
   m_GameObject: {fileID: 891058468}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.41, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 262105747}
   m_Father: {fileID: 525595400}
@@ -757,7 +757,7 @@ Transform:
   m_GameObject: {fileID: 904781116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.41, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 943737670}
   m_Father: {fileID: 1616909525}
@@ -2331,6 +2331,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxThirst
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976577505904198957, guid: e64fdf1edb16ea24db6d9fd4d2cd0db5,
+        type: 3}
+      propertyPath: hungerAmount
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5976577505904198957, guid: e64fdf1edb16ea24db6d9fd4d2cd0db5,
+        type: 3}
+      propertyPath: thirstAmount
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 5976577505904198995, guid: e64fdf1edb16ea24db6d9fd4d2cd0db5,
         type: 3}

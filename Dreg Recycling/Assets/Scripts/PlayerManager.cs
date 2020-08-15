@@ -32,7 +32,6 @@ public class PlayerManager : MonoBehaviour
         moveWhileThirsty = defaultSpeed / 2;
 
         moveSpeed = defaultSpeed;
-        StartCoroutine(HungerSpeed());
     }
     private void Update()
     {
@@ -57,15 +56,5 @@ public class PlayerManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
-    }
-
-    IEnumerator HungerSpeed()
-    {
-        yield return new WaitForSeconds(18f);
-
-        Hunger += 0.05f;
-        Thirst += 0.05f;
-
-        StartCoroutine(HungerSpeed());
     }
 }

@@ -20,6 +20,8 @@ public class SearchForBottles : MonoBehaviour
     private Transform Bar;
     private bool progressBarExists = true;
 
+    [SerializeField] private Sprite openedTrashcan;
+
     private void Awake()
     {
         if (progressBarExists)
@@ -55,6 +57,8 @@ public class SearchForBottles : MonoBehaviour
                         var randomMoney = Random.Range(0, 100);
                         var randomGlassBottle = Random.Range(0, 100);
                         var randomMoneyCount = Random.Range(0.01f, 5);
+
+                        gameObject.GetComponent<SpriteRenderer>().sprite = openedTrashcan;
 
                         if (randomBottles <= chanceToGetBottle)
                         {

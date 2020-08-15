@@ -12,11 +12,13 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField]public float moveSpeed;
 
-    public int Hunger = 0;
-    [SerializeField] private int maxHunger = 20;
+    public float Hunger = 0;
+    [SerializeField] private int maxHunger = 1;
 
-    public int Thirst = 0;
-    [SerializeField] private int maxThirst = 20;
+    public float Thirst = 0;
+    [SerializeField] private int maxThirst = 1;
+
+    public float Health = 1;
 
     public float defaultSpeed = 5;
 
@@ -61,8 +63,8 @@ public class PlayerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(18f);
 
-        Hunger++;
-        Thirst++;
+        Hunger += 0.05f;
+        Thirst += 0.05f;
 
         StartCoroutine(HungerSpeed());
     }

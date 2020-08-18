@@ -10,19 +10,22 @@ public class SetDifficulty : MonoBehaviour
     public string difficulty;
     public Text difficultyText;
     public GameObject difficultyTextObj;
-    public GameObject playButton;
+    public GameObject playButtonObj;
+    public Button playButton;
     
 
     private void Awake()
     {
         DontDestroyOnLoad(GameObject.Find("SetDifficulty"));
+        playButton.interactable = false;
     }
 
     public void setDifficulty(string _difficulty)
     {
         difficulty = _difficulty;
-        playButton.SetActive(true);
+        playButtonObj.SetActive(true);
         difficultyTextObj.SetActive(true);
+        playButton.interactable = true;
 
     }
 
@@ -30,17 +33,17 @@ public class SetDifficulty : MonoBehaviour
     {
         if (difficulty == "Easy")
         {
-            difficultyText.text = "jakov je rušan";
+            difficultyText.text = "Your family is in town for a long time.For doing jobs ,you will get more money";
         }
 
         if (difficulty == "Medium")
         {
-            difficultyText.text = "jakov je fuj";
+            difficultyText.text = "You are in town for few years so you will get a bit more money";
         }
 
         if (difficulty == "Hard")
         {
-            difficultyText.text = "fk ju jakov";
+            difficultyText.text = "You are new in town and you will get least amount of money";
         }
     }
 

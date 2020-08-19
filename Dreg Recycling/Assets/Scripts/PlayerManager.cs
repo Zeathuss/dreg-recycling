@@ -34,6 +34,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private float minThirstSpeed = 20;
     public float thirstAmount = 0;
 
+    public string Difficulty;
+
+    private void Awake()
+    {
+        Difficulty = PlayerPrefs.GetString("Difficulty");
+    }
+
     private void Start()
     {
         moveWhileHungry = defaultSpeed / 2;

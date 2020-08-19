@@ -16,7 +16,6 @@ public class SetDifficulty : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(GameObject.Find("SetDifficulty"));
         playButton.interactable = false;
     }
 
@@ -26,7 +25,7 @@ public class SetDifficulty : MonoBehaviour
         playButtonObj.SetActive(true);
         difficultyTextObj.SetActive(true);
         playButton.interactable = true;
-
+        PlayerPrefs.SetString("Difficulty", difficulty);
     }
 
     private void Update()

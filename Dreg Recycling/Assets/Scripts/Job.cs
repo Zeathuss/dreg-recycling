@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Job : MonoBehaviour
 {
+    [SerializeField] private float FinalJobPayout;
+    [SerializeField] private float JobPlayout;
     [SerializeField] private float FinalJobPlayout;
     [SerializeField] private float JobPayout;
 
@@ -12,6 +14,15 @@ public class Job : MonoBehaviour
     {
         if (PlayerPrefs.GetString("Difficulty") == "Easy")
         {
+            FinalJobPayout = JobPlayout + JobPlayout * 0.25f;
+        }
+        if (PlayerPrefs.GetString("Difficulty") == "Medium")
+        {
+            FinalJobPayout = JobPlayout;
+        }
+        if (PlayerPrefs.GetString("Difficulty") == "Hard")
+        {
+            FinalJobPayout = JobPlayout - JobPlayout * 0.25f;
             FinalJobPlayout = JobPayout + JobPayout * 0.25f;
         }
         if (PlayerPrefs.GetString("Difficulty") == "Medium")
@@ -26,7 +37,7 @@ public class Job : MonoBehaviour
 
     void FinishJob()
     {
-        GameObject.Find("Player").GetComponent<PlayerManager>().Money += FinalJobPlayout;
+        GameObject.Find("Player").GetComponent<PlayerManager>().Money += FinalJobPayout;
     }
 
 }

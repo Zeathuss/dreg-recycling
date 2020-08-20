@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerManager : MonoBehaviour
 {
+    public GameObject player;
+
     public float Money;
     public int Bottles;
     public int glassBottle;
@@ -36,13 +38,21 @@ public class PlayerManager : MonoBehaviour
 
     public string Difficulty;
 
+    public Vector2 playerPos;
+
+    public float playerYPos;
+    public float playerXPos;
+
     private void Awake()
     {
         Difficulty = PlayerPrefs.GetString("Difficulty");
+        playerPos = new Vector2(PlayerPrefs.GetFloat("PlayerXPos"), PlayerPrefs.GetFloat("PlayerYPos"));
     }
 
     private void Start()
     {
+        player.transform.position = playerPos;
+
         moveWhileHungry = defaultSpeed / 2;
         moveWhileThirsty = defaultSpeed / 2;
 
@@ -58,6 +68,13 @@ public class PlayerManager : MonoBehaviour
     }
     private void Update()
     {
+        playerXPos = player.transform.position.x;
+        playerYPos = player.transform.position.y;
+
+        PlayerPrefs.SetFloat("PlayerXPos", playerXPos);
+        PlayerPrefs.SetFloat("PlayerYPos", playerYPos);
+
+
         if (hungerSpeed <= maxHungerSpeed) hungerSpeed = maxHungerSpeed;
         if (thirstSpeed <= maxThirstSpeed) thirstSpeed = maxThirstSpeed;
 

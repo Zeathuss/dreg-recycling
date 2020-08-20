@@ -7,6 +7,8 @@ public class Job : MonoBehaviour
 {
     [SerializeField] private float FinalJobPayout;
     [SerializeField] private float JobPlayout;
+    [SerializeField] private float FinalJobPlayout;
+    [SerializeField] private float JobPayout;
 
     void Start()
     {
@@ -21,6 +23,15 @@ public class Job : MonoBehaviour
         if (PlayerPrefs.GetString("Difficulty") == "Hard")
         {
             FinalJobPayout = JobPlayout - JobPlayout * 0.25f;
+            FinalJobPlayout = JobPayout + JobPayout * 0.25f;
+        }
+        if (PlayerPrefs.GetString("Difficulty") == "Medium")
+        {
+            FinalJobPlayout = JobPayout;
+        }
+        if (PlayerPrefs.GetString("Difficulty") == "Hard")
+        {
+            FinalJobPlayout = JobPayout - JobPayout * 0.25f;
         }
     }
 

@@ -32,17 +32,17 @@ public class SetDifficulty : MonoBehaviour
     {
         if (difficulty == "Easy")
         {
-            difficultyText.text = "Your family is in town for a long time.For doing jobs ,you will get more money";
+            difficultyText.text = "Your family has been in town for a long time. If you finish a job, you will get more money.";
         }
 
         if (difficulty == "Medium")
         {
-            difficultyText.text = "You are in town for few years so you will get a bit more money";
+            difficultyText.text = "You have been in town for few years, you will get a standard amount of money.";
         }
 
         if (difficulty == "Hard")
         {
-            difficultyText.text = "You are new in town and you will get least amount of money";
+            difficultyText.text = "You are new in town and you will get the least amount of money.";
         }
     }
 

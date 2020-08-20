@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SearchForBottles : MonoBehaviour
 {
@@ -17,15 +18,14 @@ public class SearchForBottles : MonoBehaviour
     [SerializeField] private float timeToSearch;
     [SerializeField] private float timePressingSpace;
 
-    [SerializeField] private GameObject glassBottle;
-    [SerializeField] private GameObject plasticBottle;
-    [SerializeField] private GameObject moneyGet;
-
     private Transform progressBar;
     private Transform Bar;
     private bool progressBarExists = true;
 
     [SerializeField] private Sprite openedTrashcan;
+
+    [SerializeField] private TMP_Text text;
+    private string textString;
 
     private void Awake()
     {
@@ -70,6 +70,7 @@ public class SearchForBottles : MonoBehaviour
                             GameObject.Find("Player").GetComponent<PlayerManager>().Bottles++;
                             isUsed = true;
                             Debug.Log("Bottle Found");
+                            textString = "+1 Plastic Bottle";
                         }
                         else
                         {
@@ -82,6 +83,7 @@ public class SearchForBottles : MonoBehaviour
                             GameObject.Find("Player").GetComponent<PlayerManager>().Money += randomMoneyCount;
                             isUsed = true;
                             Debug.Log("Money Found");
+                            textString = textString + "\n+" + System.Math.Round(randomMoneyCount, 2) + " Money";
                         }
                         else
                         {
@@ -95,7 +97,7 @@ public class SearchForBottles : MonoBehaviour
                             isUsed = true;
                             Debug.Log("GlassBottle Found");
 
-
+                            textString = textString + "+1 Glass Bottle";
                         }
                         else
                         {
@@ -113,6 +115,8 @@ public class SearchForBottles : MonoBehaviour
 
                 if (Bar.localScale.x > 4)
                 {
+                    text.gameObject.SetActive(true);
+                    text.text = textString;
                     progressBarExists = false;
                     SetSize(4);
                     Destroy(progressBar.gameObject);

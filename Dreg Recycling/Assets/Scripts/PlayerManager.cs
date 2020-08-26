@@ -23,7 +23,6 @@ public class PlayerManager : MonoBehaviour
     public float Health = 1;
 
     public float defaultSpeed = 5;
-
     public float moveWhileHungry;
     public float moveWhileThirsty;
 

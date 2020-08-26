@@ -5,7 +5,7 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class SetDifficulty : MonoBehaviour
+public class SaveSystem : MonoBehaviour
 {
     public string difficulty;
     public Text difficultyText;
@@ -16,8 +16,11 @@ public class SetDifficulty : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(this);
+
         playButton.interactable = false;
     }
+
 
     public void setDifficulty(string _difficulty)
     {
@@ -28,8 +31,15 @@ public class SetDifficulty : MonoBehaviour
         PlayerPrefs.SetString("Difficulty", difficulty);
     }
 
+    public void difficultyWasSet()
+    {
+        difficultyTextObj.SetActive(true);
+        playButtonObj.SetActive(true);
+    }
+
     private void Update()
     {
+
         if (difficulty == "Easy")
         {
             difficultyText.text = "Your family has been in town for a long time. If you finish a job, you will get more money.";

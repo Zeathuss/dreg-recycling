@@ -47,7 +47,7 @@ public class SaveSystem : MonoBehaviour
 
         if (difficulty == "Medium")
         {
-            difficultyText.text = "You have been in town for few years, you will get a standard amount of money.";
+            difficultyText.text = "You have been in town for a few years, you will get a standard amount of money.";
         }
 
         if (difficulty == "Hard")

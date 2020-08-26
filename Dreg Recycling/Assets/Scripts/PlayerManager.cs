@@ -23,7 +23,6 @@ public class PlayerManager : MonoBehaviour
     public float Health = 1;
 
     public float defaultSpeed = 5;
-
     public float moveWhileHungry;
     public float moveWhileThirsty;
 
@@ -81,17 +80,17 @@ public class PlayerManager : MonoBehaviour
         if (hungerSpeed >= minHungerSpeed) hungerSpeed = minHungerSpeed;
         if (thirstSpeed >= minThirstSpeed) thirstSpeed = minThirstSpeed;
 
-        if (Hunger <= maxHunger)
+        if (Hunger >= maxHunger)
         {
             moveSpeed = moveWhileHungry;
         }
-        else moveSpeed = moveSpeed;
+        else moveSpeed = defaultSpeed;
 
-        if (Thirst <= maxThirst)
+        if (Thirst >= maxThirst)
         {
             moveSpeed = moveWhileThirsty;
         }
-        else moveSpeed = moveSpeed;
+        else moveSpeed = defaultSpeed;
 
 
         if(FindObjectOfType<ButtonManager>().sellingPanel.activeSelf == true || FindObjectOfType<OpeningShop>().shopPanel.activeSelf == true)

@@ -5,30 +5,41 @@ using UnityEngine;
 
 public class FloatingText : MonoBehaviour
 {
-    private GameObject textObj;
     [SerializeField] private float fadeSpeed;
 
-    private void Start()
+    private float fadeOutTime = 5;
+
+    private void Awake()
     {
-        textObj = gameObject.transform.GetChild(0).gameObject;
+        StartCoroutine(FadeOutRoutine());
     }
 
-    void Update()
+    private void Update()
     {
-        if(textObj.activeSelf == true)
-        {
-            textObj.transform.position = new Vector2(transform.position.x, transform.position.y * 0.1f);
+            if (gameObject.activeSelf == true)
+            {
+                transform.Translate(transform.up * 0.1f * Time.deltaTime);
 
-            Color objectColor = gameObject.GetComponent<Renderer>().material.color;
-            float fadeAmount = objectColor.a - (fadeSpeed * Time.deltaTime);
+            TMP_Text text = GetComponent<TMP_Text>();
 
-            objectColor = new Color(objectColor.r, objectColor.g, objectColor.b, fadeAmount);
-            this.GetComponent<Renderer>().material.color = objectColor;
-
-            if(objectColor.a <= 0)
+            if (text.color.a <= 0)
             {
                 Destroy(gameObject);
             }
         }
+
     }
+
+    private IEnumerator FadeOutRoutine()
+    {
+        TMP_Text text = GetComponent<TMP_Text>();
+        Color originalColor = text.color;
+
+        for (float t = 0.01f; t < fadeOutTime; t += Time.deltaTime)
+        {
+            text.color = Color.Lerp(originalColor, Color.clear, Mathf.Min(1, t / fadeOutTime));
+            yield return null;
+        }
+    }
+
 }

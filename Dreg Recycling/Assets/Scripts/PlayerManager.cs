@@ -65,9 +65,54 @@ public class PlayerManager : MonoBehaviour
         StartCoroutine(ThirstSpeed());
         StartCoroutine(HungerAmount());
         StartCoroutine(ThirstAmount());
+
+
+
+
+
+
+
+
+
+
+        #region Loading
+        Health = PlayerPrefs.GetFloat("Heatlh", 1);
+        Thirst = PlayerPrefs.GetFloat("Thirst", 1);
+        Hunger = PlayerPrefs.GetFloat("Hunger", 1);
+        Money = PlayerPrefs.GetFloat("Money", 0);
+        Bottles = PlayerPrefs.GetInt("Bottles", 0);
+        glassBottle = PlayerPrefs.GetInt("glassBottle", 0);
+        hungerAmount = PlayerPrefs.GetFloat("hungerAmount", 0.05f);
+        thirstAmount = PlayerPrefs.GetFloat("thirstAmount", 0.05f);
+        thirstSpeed = PlayerPrefs.GetFloat("thirstSpeed", 0);
+        hungerSpeed = PlayerPrefs.GetFloat("hungerSpeed", 0);
+
+        moveSpeed = PlayerPrefs.GetFloat("moveSpeed", 5);
+        moveWhileHungry = PlayerPrefs.GetFloat("moveWhileHungry", 5);
+        moveWhileThirsty = PlayerPrefs.GetFloat("moveWhileThirsty", 5);
+        #endregion
     }
     private void Update()
     {
+        #region Saving
+        PlayerPrefs.SetFloat("Heatlh", Health);
+        PlayerPrefs.SetFloat("Thirst", Thirst);
+        PlayerPrefs.SetFloat("Hunger", Hunger);
+        PlayerPrefs.SetFloat("Money", Money);
+        PlayerPrefs.SetInt("Bottles", Bottles);
+        PlayerPrefs.SetInt("glassBottle", glassBottle);
+        PlayerPrefs.SetFloat("hungerAmount", hungerAmount);
+        PlayerPrefs.SetFloat("thirstAmount", thirstAmount);
+        PlayerPrefs.SetFloat("thirstSpeed", thirstSpeed);
+        PlayerPrefs.SetFloat("hungerSpeed", hungerSpeed);
+
+        PlayerPrefs.SetFloat("moveSpeed", moveSpeed);
+        PlayerPrefs.SetFloat("moveWhileHungry", moveWhileHungry);
+        PlayerPrefs.SetFloat("moveWhileThirsty", moveWhileThirsty);
+        #endregion
+
+
+
         playerXPos = player.transform.position.x;
         playerYPos = player.transform.position.y;
 
@@ -75,23 +120,23 @@ public class PlayerManager : MonoBehaviour
         PlayerPrefs.SetFloat("PlayerYPos", playerYPos);
 
 
-        if (hungerSpeed <= maxHungerSpeed) hungerSpeed = maxHungerSpeed;
-        if (thirstSpeed <= maxThirstSpeed) thirstSpeed = maxThirstSpeed;
+        if (hungerSpeed >= maxHungerSpeed) hungerSpeed = maxHungerSpeed;
+        if (thirstSpeed >= maxThirstSpeed) thirstSpeed = maxThirstSpeed;
 
-        if (hungerSpeed >= minHungerSpeed) hungerSpeed = minHungerSpeed;
-        if (thirstSpeed >= minThirstSpeed) thirstSpeed = minThirstSpeed;
+        if (hungerSpeed <= minHungerSpeed) hungerSpeed = minHungerSpeed;
+        if (thirstSpeed <= minThirstSpeed) thirstSpeed = minThirstSpeed;
 
-        if (Hunger <= maxHunger)
+        if (Hunger >= maxHunger)
         {
             moveSpeed = moveWhileHungry;
         }
-        else moveSpeed = moveSpeed;
+        else moveSpeed = defaultSpeed;
 
-        if (Thirst <= maxThirst)
+        if (Thirst >= maxThirst)
         {
             moveSpeed = moveWhileThirsty;
         }
-        else moveSpeed = moveSpeed;
+        else moveSpeed = defaultSpeed;
 
 
         if(FindObjectOfType<ButtonManager>().sellingPanel.activeSelf == true || FindObjectOfType<OpeningShop>().shopPanel.activeSelf == true)
